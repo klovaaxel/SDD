@@ -161,7 +161,7 @@ export default function App() {
     if (state.mondayMode === 'workshop') {
       return [MONDAY_WORKSHOP_SLOT.id];
     }
-    return ALL_SLOTS.filter((s) => s.date === '2026-05-11').map((s) => s.id);
+    return [];
   }, [state.mondayMode]);
 
   const tuesdaySlotIds = ALL_SLOTS.filter((s) => s.date === '2026-05-12').map(
@@ -198,19 +198,17 @@ export default function App() {
       <section className="toolbar card">
         <div className="toolbar-row">
           <label className="field-inline">
-            <span>Monday</span>
-            <select
-              value={state.mondayMode}
+            <input
+              type="checkbox"
+              checked={state.mondayMode === 'workshop'}
               onChange={(e) =>
                 setState((s) => ({
                   ...s,
-                  mondayMode: e.target.value as PersistedState['mondayMode'],
+                  mondayMode: e.target.checked ? 'workshop' : 'skip',
                 }))
               }
-            >
-              <option value="conference">Main conference day</option>
-              <option value="workshop">Pre-conference workshop</option>
-            </select>
+            />
+            <span>Monday pre-conference workshop</span>
           </label>
           <label className="field-inline">
             <input
@@ -342,6 +340,22 @@ export default function App() {
         <main className="main-col">
           {tab === 'mon' && (
             <div className="stack">
+              <section className="card pdf-note" role="note">
+                <strong>Monday 11 May</strong>
+                <p>
+                  Matches{' '}
+                  <a
+                    href="https://sddconf.com/agenda"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    sddconf.com/agenda
+                  </a>
+                  : full-day pre-conference workshops only. Tick “Monday
+                  pre-conference workshop” above to choose WK01–WK07; the main
+                  parallel programme runs Tuesday–Thursday.
+                </p>
+              </section>
               {mondaySlots.map((id) => (
                 <SlotPicker
                   key={id}
@@ -367,12 +381,17 @@ export default function App() {
           {tab === 'wed' && (
             <div className="stack">
               <section className="card pdf-note" role="note">
-                <strong>About Wednesday in the PDF</strong>
+                <strong>Wednesday 13 May</strong>
                 <p>
-                  Page 3 ends with <strong>Wednesday 13 May</strong>; page 4 prints the
-                  full parallel grid under <strong>Thursday 14 May</strong>. The talks
-                  below use that grid (same lineup as the Thursday tab). Choose each
-                  day separately — confirm rooms on site if anything shifts.
+                  Session titles follow the{' '}
+                  <a
+                    href="https://sddconf.com/agenda"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    official online agenda
+                  </a>
+                  .
                 </p>
               </section>
               {wednesdaySlotIds.map((id) => (
@@ -454,9 +473,9 @@ export default function App() {
 
       <footer className="footer">
         <p>
-          Schedules follow the official SDD 2026 PDF (including Wednesday and
-          Thursday grids transcribed from page 4). Verify last‑minute room moves on
-          site. Plan data stays on each device unless you use share/export.
+          Schedule data follows{' '}
+          <a href="https://sddconf.com/agenda">sddconf.com/agenda</a>. Confirm last‑minute
+          room changes on site. Plans stay on this device unless you share or export.
         </p>
       </footer>
     </div>

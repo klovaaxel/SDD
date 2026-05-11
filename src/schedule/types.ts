@@ -29,7 +29,8 @@ export interface BreakBlock {
   title: string;
 }
 
-export type MondayMode = 'conference' | 'workshop';
+/** Monday is workshops-only on the official agenda — skip if not attending */
+export type MondayMode = 'workshop' | 'skip';
 
 export interface PersistedState {
   version: 1;

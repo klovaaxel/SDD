@@ -1,11 +1,11 @@
-import type { PersistedState } from '../schedule/types';
+import type { MondayMode, PersistedState } from '../schedule/types';
 
 const KEY = 'sdd2026-schedule-v1';
 
 export const DEFAULT_STATE: PersistedState = {
   version: 1,
   choices: {},
-  mondayMode: 'conference',
+  mondayMode: 'skip',
   fridayWorkshop: false,
   wednesdayNote: '',
   notifyEnabled: false,
@@ -19,9 +19,14 @@ export function loadState(): PersistedState {
     if (!raw) return { ...DEFAULT_STATE };
     const parsed = JSON.parse(raw) as Partial<PersistedState>;
     if (parsed.version !== 1) return { ...DEFAULT_STATE };
+    const mondayMode: MondayMode =
+      (parsed.mondayMode as MondayMode | 'conference' | undefined) === 'conference'
+        ? 'skip'
+        : (parsed.mondayMode as MondayMode | undefined) ?? DEFAULT_STATE.mondayMode;
     return {
       ...DEFAULT_STATE,
       ...parsed,
+      mondayMode,
       choices: { ...DEFAULT_STATE.choices, ...parsed.choices },
     };
   } catch {
@@ -39,11 +44,16 @@ export function exportJson(state: PersistedState): string {
 
 export function importJson(text: string): PersistedState | null {
   try {
-    const parsed = JSON.parse(text) as PersistedState;
+    const parsed = JSON.parse(text) as Partial<PersistedState>;
     if (parsed.version !== 1) return null;
+    const mondayMode: MondayMode =
+      (parsed.mondayMode as MondayMode | 'conference' | undefined) === 'conference'
+        ? 'skip'
+        : (parsed.mondayMode as MondayMode | undefined) ?? DEFAULT_STATE.mondayMode;
     return {
       ...DEFAULT_STATE,
       ...parsed,
+      mondayMode,
       choices: { ...DEFAULT_STATE.choices, ...parsed.choices },
     };
   } catch {

@@ -31,31 +31,13 @@ export function getSlotById(id: string): Slot | undefined {
 
 /** Slots that should appear in pickers / reminders for current plan */
 export function applicableSlots(state: PersistedState): Slot[] {
-  const list: Slot[] = [];
+  const list: Slot[] = [...ALL_SLOTS];
   if (state.mondayMode === 'workshop') {
-    list.push(MONDAY_WORKSHOP_SLOT);
-  } else {
-    for (const s of ALL_SLOTS) {
-      if (s.date === '2026-05-11' && s.id.startsWith('mon-conf')) {
-        list.push(s);
-      }
-    }
+    list.unshift(MONDAY_WORKSHOP_SLOT);
   }
-
-  for (const s of ALL_SLOTS) {
-    if (
-      s.date === '2026-05-12' ||
-      s.date === '2026-05-13' ||
-      s.date === '2026-05-14'
-    ) {
-      list.push(s);
-    }
-  }
-
   if (state.fridayWorkshop) {
     list.push(FRIDAY_WORKSHOP_SLOT);
   }
-
   return list;
 }
 
@@ -97,36 +79,31 @@ export function buildTimeline(state: PersistedState): TimelineEntry[] {
 
   if (state.mondayMode === 'workshop') {
     addSessionFromChoice(MONDAY_WORKSHOP_SLOT);
-  } else {
-    for (const slot of ALL_SLOTS) {
-      if (slot.date === '2026-05-11' && slot.id.startsWith('mon-conf')) {
-        if (slot.requiresChoice) {
-          addSessionFromChoice(slot);
-        } else {
-          const kn = slot.sessions[0];
-          entries.push({
-            sortKey: dateTimeSort(slot.date, slot.start),
-            kind: 'session',
-            date: slot.date,
-            start: slot.start,
-            end: slot.end,
-            title: kn.title,
-            subtitle: kn.speaker,
-            room: kn.room,
-            slotId: slot.id,
-            sessionId: kn.id,
-          });
-        }
-      }
-    }
   }
 
   for (const slot of ALL_SLOTS) {
     if (
-      slot.date === '2026-05-12' ||
-      slot.date === '2026-05-13' ||
-      slot.date === '2026-05-14'
+      slot.date !== '2026-05-12' &&
+      slot.date !== '2026-05-13' &&
+      slot.date !== '2026-05-14'
     ) {
+      continue;
+    }
+    if (!slot.requiresChoice) {
+      const kn = slot.sessions[0];
+      entries.push({
+        sortKey: dateTimeSort(slot.date, slot.start),
+        kind: 'session',
+        date: slot.date,
+        start: slot.start,
+        end: slot.end,
+        title: kn.title,
+        subtitle: kn.speaker,
+        room: kn.room,
+        slotId: slot.id,
+        sessionId: kn.id,
+      });
+    } else {
       addSessionFromChoice(slot);
     }
   }
@@ -135,12 +112,7 @@ export function buildTimeline(state: PersistedState): TimelineEntry[] {
     addSessionFromChoice(FRIDAY_WORKSHOP_SLOT);
   }
 
-  const useBreaks =
-    state.mondayMode === 'conference'
-      ? ALL_BREAKS
-      : ALL_BREAKS.filter((b) => b.date !== '2026-05-11');
-
-  for (const b of useBreaks) {
+  for (const b of ALL_BREAKS) {
     entries.push({
       sortKey: dateTimeSort(b.date, b.start),
       kind: 'break',

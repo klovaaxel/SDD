@@ -108,8 +108,8 @@ export const FRIDAY_WORKSHOPS: Session[] = [
   },
 ];
 
-const monConfKeynote: Session = {
-  id: 'mon-kn01',
+const tueConfKeynote: Session = {
+  id: 'tue-kn01',
   track: 1,
   kind: 'keynote',
   title:
@@ -118,9 +118,9 @@ const monConfKeynote: Session = {
   room: 'AUDITORIUM 1',
 };
 
-const mon1130: Session[] = [
+const tueConf1130: Session[] = [
   {
-    id: 'mon-1130-t1',
+    id: 'tue-conf-1130-t1',
     track: 1,
     kind: 'talk',
     title: '10 things I do on every .NET app',
@@ -128,7 +128,7 @@ const mon1130: Session[] = [
     room: 'FROBISHER 4',
   },
   {
-    id: 'mon-1130-t2',
+    id: 'tue-conf-1130-t2',
     track: 2,
     kind: 'talk',
     title: 'LLMs/AI and the .NET tooling landscape',
@@ -136,7 +136,7 @@ const mon1130: Session[] = [
     room: 'FROBISHER 2',
   },
   {
-    id: 'mon-1130-t3',
+    id: 'tue-conf-1130-t3',
     track: 3,
     kind: 'talk',
     title:
@@ -145,7 +145,7 @@ const mon1130: Session[] = [
     room: 'AUDITORIUM 1',
   },
   {
-    id: 'mon-1130-t4',
+    id: 'tue-conf-1130-t4',
     track: 4,
     kind: 'talk',
     title: 'The past, present and future of programming languages',
@@ -153,7 +153,7 @@ const mon1130: Session[] = [
     room: 'FROBISHER 3',
   },
   {
-    id: 'mon-1130-t5',
+    id: 'tue-conf-1130-t5',
     track: 5,
     kind: 'talk',
     title: 'Work now, sync later: is local first the future of web apps?',
@@ -161,7 +161,7 @@ const mon1130: Session[] = [
     room: 'FROBISHER 6',
   },
   {
-    id: 'mon-1130-t6',
+    id: 'tue-conf-1130-t6',
     track: 6,
     kind: 'talk',
     title: 'Aspect-oriented and agentic architecture',
@@ -169,7 +169,7 @@ const mon1130: Session[] = [
     room: 'FROBISHER 1',
   },
   {
-    id: 'mon-1130-t7',
+    id: 'tue-conf-1130-t7',
     track: 7,
     kind: 'talk',
     title:
@@ -179,9 +179,9 @@ const mon1130: Session[] = [
   },
 ];
 
-const mon1400: Session[] = [
+const tueConf1400: Session[] = [
   {
-    id: 'mon-1400-t1',
+    id: 'tue-conf-1400-t1',
     track: 1,
     kind: 'talk',
     title: 'Functional code in C# 13 and beyond',
@@ -189,7 +189,7 @@ const mon1400: Session[] = [
     room: 'FROBISHER 6',
   },
   {
-    id: 'mon-1400-t2',
+    id: 'tue-conf-1400-t2',
     track: 2,
     kind: 'talk',
     title: 'Coding faster with LLMs: lessons learned',
@@ -197,7 +197,7 @@ const mon1400: Session[] = [
     room: 'AUDITORIUM 1',
   },
   {
-    id: 'mon-1400-t3',
+    id: 'tue-conf-1400-t3',
     track: 3,
     kind: 'talk',
     title: 'The death of passwords: implementing passkeys in .NET 10',
@@ -205,7 +205,7 @@ const mon1400: Session[] = [
     room: 'FROBISHER 2',
   },
   {
-    id: 'mon-1400-t4',
+    id: 'tue-conf-1400-t4',
     track: 4,
     kind: 'talk',
     title: 'How to write a function',
@@ -213,16 +213,15 @@ const mon1400: Session[] = [
     room: 'FROBISHER 5',
   },
   {
-    id: 'mon-1400-t5',
+    id: 'tue-conf-1400-t5',
     track: 5,
     kind: 'talk',
-    title:
-      'Follow the money: how financial structures shape software design',
-    speaker: 'Ian Miell',
+    title: 'Why software breaks, and how we can fix it',
+    speaker: 'Jules May',
     room: 'FROBISHER 4',
   },
   {
-    id: 'mon-1400-t6',
+    id: 'tue-conf-1400-t6',
     track: 6,
     kind: 'talk',
     title:
@@ -231,7 +230,7 @@ const mon1400: Session[] = [
     room: 'FROBISHER 3',
   },
   {
-    id: 'mon-1400-t7',
+    id: 'tue-conf-1400-t7',
     track: 7,
     kind: 'talk',
     title:
@@ -241,9 +240,9 @@ const mon1400: Session[] = [
   },
 ];
 
-const mon1600: Session[] = [
+const tueConf1600: Session[] = [
   {
-    id: 'mon-1600-t1',
+    id: 'tue-conf-1600-t1',
     track: 1,
     kind: 'talk',
     title: 'Simplifying thread safety',
@@ -251,7 +250,7 @@ const mon1600: Session[] = [
     room: 'FROBISHER 5',
   },
   {
-    id: 'mon-1600-t2',
+    id: 'tue-conf-1600-t2',
     track: 2,
     kind: 'talk',
     title:
@@ -260,7 +259,7 @@ const mon1600: Session[] = [
     room: 'FROBISHER 1',
   },
   {
-    id: 'mon-1600-t3',
+    id: 'tue-conf-1600-t3',
     track: 3,
     kind: 'talk',
     title: 'The Model Context Protocol (MCP)',
@@ -268,7 +267,7 @@ const mon1600: Session[] = [
     room: 'AUDITORIUM 1',
   },
   {
-    id: 'mon-1600-t4',
+    id: 'tue-conf-1600-t4',
     track: 4,
     kind: 'talk',
     title:
@@ -277,7 +276,7 @@ const mon1600: Session[] = [
     room: 'FROBISHER 4',
   },
   {
-    id: 'mon-1600-t5',
+    id: 'tue-conf-1600-t5',
     track: 5,
     kind: 'talk',
     title: 'The fewer environments the better: lean DevOps strategies',
@@ -285,7 +284,7 @@ const mon1600: Session[] = [
     room: 'FROBISHER 6',
   },
   {
-    id: 'mon-1600-t6',
+    id: 'tue-conf-1600-t6',
     track: 6,
     kind: 'talk',
     title:
@@ -294,7 +293,7 @@ const mon1600: Session[] = [
     room: 'FROBISHER 3',
   },
   {
-    id: 'mon-1600-t7',
+    id: 'tue-conf-1600-t7',
     track: 7,
     kind: 'talk',
     title:
@@ -304,9 +303,9 @@ const mon1600: Session[] = [
   },
 ];
 
-const tue0930: Session[] = [
+const wed0930: Session[] = [
   {
-    id: 'tue-0930-t1',
+    id: 'wed-0930-t1',
     track: 1,
     kind: 'talk',
     title: '10 things every .NET developer should know about Azure',
@@ -314,7 +313,7 @@ const tue0930: Session[] = [
     room: 'AUDITORIUM 1',
   },
   {
-    id: 'tue-0930-t2',
+    id: 'wed-0930-t2',
     track: 2,
     kind: 'talk',
     title: 'Re-inventing yourself: a developer’s roadmap to the AI revolution',
@@ -322,7 +321,7 @@ const tue0930: Session[] = [
     room: 'FROBISHER 4',
   },
   {
-    id: 'tue-0930-t3',
+    id: 'wed-0930-t3',
     track: 3,
     kind: 'talk',
     title: 'Being the human in the loop',
@@ -330,7 +329,7 @@ const tue0930: Session[] = [
     room: 'FROBISHER 1',
   },
   {
-    id: 'tue-0930-t4',
+    id: 'wed-0930-t4',
     track: 4,
     kind: 'talk',
     title: 'How not to get hacked',
@@ -338,7 +337,7 @@ const tue0930: Session[] = [
     room: 'FROBISHER 6',
   },
   {
-    id: 'tue-0930-t5',
+    id: 'wed-0930-t5',
     track: 5,
     kind: 'talk',
     title:
@@ -347,7 +346,7 @@ const tue0930: Session[] = [
     room: 'FROBISHER 3',
   },
   {
-    id: 'tue-0930-t6',
+    id: 'wed-0930-t6',
     track: 6,
     kind: 'talk',
     title: 'Modular monoliths: a happy middle',
@@ -355,7 +354,7 @@ const tue0930: Session[] = [
     room: 'FROBISHER 5',
   },
   {
-    id: 'tue-0930-t7',
+    id: 'wed-0930-t7',
     track: 7,
     kind: 'talk',
     title: 'Granularity and communication for microservices',
@@ -364,9 +363,9 @@ const tue0930: Session[] = [
   },
 ];
 
-const tue1130: Session[] = [
+const wed1130: Session[] = [
   {
-    id: 'tue-1130-t1',
+    id: 'wed-1130-t1',
     track: 1,
     kind: 'talk',
     title: 'Authorization: the next frontier',
@@ -374,7 +373,7 @@ const tue1130: Session[] = [
     room: 'FROBISHER 2',
   },
   {
-    id: 'tue-1130-t2',
+    id: 'wed-1130-t2',
     track: 2,
     kind: 'talk',
     title:
@@ -383,7 +382,7 @@ const tue1130: Session[] = [
     room: 'AUDITORIUM 1',
   },
   {
-    id: 'tue-1130-t3',
+    id: 'wed-1130-t3',
     track: 3,
     kind: 'talk',
     title: 'No more OOP: functional DDD without the baggage',
@@ -391,7 +390,7 @@ const tue1130: Session[] = [
     room: 'FROBISHER 3',
   },
   {
-    id: 'tue-1130-t4',
+    id: 'wed-1130-t4',
     track: 4,
     kind: 'talk',
     title: 'Hello, quantum world!',
@@ -399,7 +398,7 @@ const tue1130: Session[] = [
     room: 'FROBISHER 4',
   },
   {
-    id: 'tue-1130-t5',
+    id: 'wed-1130-t5',
     track: 5,
     kind: 'talk',
     title: 'Building a platform to run distributed workloads, for free!',
@@ -407,7 +406,7 @@ const tue1130: Session[] = [
     room: 'FROBISHER 6',
   },
   {
-    id: 'tue-1130-t6',
+    id: 'wed-1130-t6',
     track: 6,
     kind: 'talk',
     title: 'Modular monoliths and other facepalms',
@@ -415,7 +414,7 @@ const tue1130: Session[] = [
     room: 'FROBISHER 5',
   },
   {
-    id: 'tue-1130-t7',
+    id: 'wed-1130-t7',
     track: 7,
     kind: 'talk',
     title:
@@ -425,9 +424,9 @@ const tue1130: Session[] = [
   },
 ];
 
-const tue1400: Session[] = [
+const wed1400: Session[] = [
   {
-    id: 'tue-1400-t1',
+    id: 'wed-1400-t1',
     track: 1,
     kind: 'talk',
     title:
@@ -436,7 +435,7 @@ const tue1400: Session[] = [
     room: 'FROBISHER 4',
   },
   {
-    id: 'tue-1400-t2',
+    id: 'wed-1400-t2',
     track: 2,
     kind: 'talk',
     title:
@@ -445,7 +444,7 @@ const tue1400: Session[] = [
     room: 'AUDITORIUM 1',
   },
   {
-    id: 'tue-1400-t3',
+    id: 'wed-1400-t3',
     track: 3,
     kind: 'talk',
     title:
@@ -454,7 +453,7 @@ const tue1400: Session[] = [
     room: 'FROBISHER 2',
   },
   {
-    id: 'tue-1400-t4',
+    id: 'wed-1400-t4',
     track: 4,
     kind: 'talk',
     title: 'How to build a knockout development team',
@@ -462,7 +461,7 @@ const tue1400: Session[] = [
     room: 'FROBISHER 1',
   },
   {
-    id: 'tue-1400-t5',
+    id: 'wed-1400-t5',
     track: 5,
     kind: 'talk',
     title: 'Measuring your architecture',
@@ -470,7 +469,7 @@ const tue1400: Session[] = [
     room: 'FROBISHER 3',
   },
   {
-    id: 'tue-1400-t6',
+    id: 'wed-1400-t6',
     track: 6,
     kind: 'talk',
     title: 'Modular monolith architecture',
@@ -478,7 +477,7 @@ const tue1400: Session[] = [
     room: 'FROBISHER 6',
   },
   {
-    id: 'tue-1400-t7',
+    id: 'wed-1400-t7',
     track: 7,
     kind: 'talk',
     title:
@@ -488,9 +487,9 @@ const tue1400: Session[] = [
   },
 ];
 
-const tue1600: Session[] = [
+const wed1600: Session[] = [
   {
-    id: 'tue-1600-t1',
+    id: 'wed-1600-t1',
     track: 1,
     kind: 'talk',
     title:
@@ -499,7 +498,7 @@ const tue1600: Session[] = [
     room: 'FROBISHER 2',
   },
   {
-    id: 'tue-1600-t2',
+    id: 'wed-1600-t2',
     track: 2,
     kind: 'talk',
     title: 'A brief overview of coding agents',
@@ -507,7 +506,7 @@ const tue1600: Session[] = [
     room: 'FROBISHER 3',
   },
   {
-    id: 'tue-1600-t3',
+    id: 'wed-1600-t3',
     track: 3,
     kind: 'talk',
     title:
@@ -516,7 +515,7 @@ const tue1600: Session[] = [
     room: 'FROBISHER 6',
   },
   {
-    id: 'tue-1600-t4',
+    id: 'wed-1600-t4',
     track: 4,
     kind: 'talk',
     title: 'Test-driven development with Blazor',
@@ -524,7 +523,7 @@ const tue1600: Session[] = [
     room: 'FROBISHER 5',
   },
   {
-    id: 'tue-1600-t5',
+    id: 'wed-1600-t5',
     track: 5,
     kind: 'talk',
     title:
@@ -533,7 +532,7 @@ const tue1600: Session[] = [
     room: 'FROBISHER 1',
   },
   {
-    id: 'tue-1600-t6',
+    id: 'wed-1600-t6',
     track: 6,
     kind: 'talk',
     title:
@@ -542,7 +541,7 @@ const tue1600: Session[] = [
     room: 'FROBISHER 4',
   },
   {
-    id: 'tue-1600-t7',
+    id: 'wed-1600-t7',
     track: 7,
     kind: 'talk',
     title: 'Creating an architecture narrative',
@@ -797,90 +796,42 @@ const thu1600: Session[] = [
   },
 ];
 
-/** PDF page 4 prints this grid under “Thursday 14 May”; page 3 ends with “Wednesday 13 May”. Same titles transcribed for Wed + Thu pickers. */
-function cloneWedIdsFromThu(sessions: Session[]): Session[] {
-  return sessions.map((s) => ({
-    ...s,
-    id: s.id.replace(/^thu-/, 'wed-'),
-  }));
-}
-
-const wed0930 = cloneWedIdsFromThu(thu0930);
-const wed1130 = cloneWedIdsFromThu(thu1130);
-const wed1400 = cloneWedIdsFromThu(thu1400);
-const wed1600 = cloneWedIdsFromThu(thu1600);
 
 export const ALL_SLOTS: Slot[] = [
   {
-    id: 'mon-conf-keynote',
-    date: '2026-05-11',
+    id: 'tue-conf-keynote',
+    date: '2026-05-12',
     start: '09:30',
     end: '11:00',
     label: 'Keynote',
-    sessions: [monConfKeynote],
+    sessions: [tueConfKeynote],
     requiresChoice: false,
   },
   {
-    id: 'mon-conf-1130',
-    date: '2026-05-11',
-    start: '11:30',
-    end: '13:00',
-    label: 'Sessions',
-    sessions: mon1130,
-    requiresChoice: true,
-  },
-  {
-    id: 'mon-conf-1400',
-    date: '2026-05-11',
-    start: '14:00',
-    end: '15:30',
-    label: 'Sessions',
-    sessions: mon1400,
-    requiresChoice: true,
-  },
-  {
-    id: 'mon-conf-1600',
-    date: '2026-05-11',
-    start: '16:00',
-    end: '17:30',
-    label: 'Sessions',
-    sessions: mon1600,
-    requiresChoice: true,
-  },
-  {
-    id: 'tue-0930',
-    date: '2026-05-12',
-    start: '09:30',
-    end: '11:00',
-    label: 'Sessions',
-    sessions: tue0930,
-    requiresChoice: true,
-  },
-  {
-    id: 'tue-1130',
+    id: 'tue-conf-1130',
     date: '2026-05-12',
     start: '11:30',
     end: '13:00',
     label: 'Sessions',
-    sessions: tue1130,
+    sessions: tueConf1130,
     requiresChoice: true,
   },
   {
-    id: 'tue-1400',
+    id: 'tue-conf-1400',
     date: '2026-05-12',
     start: '14:00',
     end: '15:30',
     label: 'Sessions',
-    sessions: tue1400,
+    sessions: tueConf1400,
     requiresChoice: true,
   },
   {
-    id: 'tue-1600',
+    id: 'tue-conf-1600',
     date: '2026-05-12',
     start: '16:00',
     end: '17:30',
     label: 'Sessions',
-    sessions: tue1600,
+    sessions: tueConf1600,
     requiresChoice: true,
   },
   {
@@ -957,31 +908,31 @@ export const ALL_SLOTS: Slot[] = [
   },
 ];
 
-const monBreaksExtra: BreakBlock[] = [
+const tuesdayMainBreaks: BreakBlock[] = [
   {
-    id: '2026-05-11-morning-coffee',
-    date: '2026-05-11',
+    id: '2026-05-12-coffee-morning',
+    date: '2026-05-12',
     start: '11:00',
     end: '11:30',
     title: 'Coffee break',
   },
   {
-    id: '2026-05-11-lunch',
-    date: '2026-05-11',
+    id: '2026-05-12-lunch',
+    date: '2026-05-12',
     start: '13:00',
     end: '14:00',
     title: 'Lunch break',
   },
   {
-    id: '2026-05-11-afternoon-coffee',
-    date: '2026-05-11',
+    id: '2026-05-12-coffee-afternoon',
+    date: '2026-05-12',
     start: '15:30',
     end: '16:00',
     title: 'Coffee break',
   },
   {
-    id: '2026-05-11-drinks',
-    date: '2026-05-11',
+    id: '2026-05-12-drinks',
+    date: '2026-05-12',
     start: '17:30',
     end: '19:00',
     title: 'Drinks reception',
@@ -989,13 +940,12 @@ const monBreaksExtra: BreakBlock[] = [
 ];
 
 export const ALL_BREAKS: BreakBlock[] = [
-  ...monBreaksExtra,
-  ...breaksForDate('2026-05-12', 'tue'),
+  ...tuesdayMainBreaks,
   ...breaksForDate('2026-05-13', 'wed'),
   ...breaksForDate('2026-05-14', 'thu'),
 ];
 
-/** Full-day workshops — mutually exclusive with Monday conference track picks */
+/** Full-day Monday pre-conference workshop (official agenda) */
 export const MONDAY_WORKSHOP_SLOT: Slot = {
   id: 'mon-workshop',
   date: '2026-05-11',

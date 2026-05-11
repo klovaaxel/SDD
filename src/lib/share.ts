@@ -1,5 +1,5 @@
 import { compressToEncodedURIComponent, decompressFromEncodedURIComponent } from 'lz-string';
-import type { PersistedState } from '../schedule/types';
+import type { MondayMode, PersistedState } from '../schedule/types';
 import { DEFAULT_STATE } from './persist';
 
 const HASH_PREFIX = 's=';
@@ -15,11 +15,16 @@ export function decodeSharePayload(hash: string): PersistedState | null {
   const json = decompressFromEncodedURIComponent(compressed);
   if (!json) return null;
   try {
-    const parsed = JSON.parse(json) as PersistedState;
+    const parsed = JSON.parse(json) as Partial<PersistedState>;
     if (parsed.version !== 1) return null;
+    const mondayMode: MondayMode =
+      (parsed.mondayMode as MondayMode | 'conference' | undefined) === 'conference'
+        ? 'skip'
+        : (parsed.mondayMode as MondayMode | undefined) ?? DEFAULT_STATE.mondayMode;
     return {
       ...DEFAULT_STATE,
       ...parsed,
+      mondayMode,
       choices: { ...DEFAULT_STATE.choices, ...parsed.choices },
     };
   } catch {
