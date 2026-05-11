@@ -25,7 +25,6 @@ import {
   encodeSharePayload,
 } from './lib/share';
 import { buildCalendarIcs, downloadTextFile } from './lib/ics';
-import { useSlotReminders } from './hooks/useReminders';
 
 type DayTab = 'mon' | 'tue' | 'wed' | 'thu' | 'fri';
 
@@ -119,28 +118,6 @@ export default function App() {
     saveState(state);
   }, [state]);
 
-  useSlotReminders(
-    state,
-    state.notifyEnabled,
-    state.notifyLeadMinutes,
-    state.notifyUnsetSlots,
-  );
-
-  const requestNotify = useCallback(async () => {
-    if (!('Notification' in window)) {
-      setToast('Notifications are not supported in this browser');
-      return;
-    }
-    const perm = await Notification.requestPermission();
-    if (perm === 'granted') {
-      setState((s) => ({ ...s, notifyEnabled: true }));
-      setToast('Reminders enabled — keep this tab open or use calendar export');
-    } else {
-      setToast('Permission denied — use Export ICS for reliable alarms');
-    }
-    window.setTimeout(() => setToast(null), 5000);
-  }, []);
-
   const share = useCallback(async () => {
     const hash = encodeSharePayload(state);
     await copyShareUrl(hash);
@@ -187,11 +164,11 @@ export default function App() {
     <div className="app">
       <header className="hero">
         <p className="eyebrow">Barbican · Europe/London</p>
-        <h1>SDD 2026 schedule picker</h1>
+        <h1>SDD 2026 calendar export</h1>
         <p className="lede">
-          Choose parallel sessions, see a simple timeline, export a calendar file
-          for reliable alarms, or turn on browser reminders while this page stays
-          open.
+          Pick your sessions from the official agenda, preview the timeline, then
+          download an <strong>.ics</strong> file for Apple Calendar, Google Calendar,
+          or Outlook — real reminders come from your calendar app.
         </p>
       </header>
 
@@ -224,54 +201,9 @@ export default function App() {
             <span>Friday post-conference workshop</span>
           </label>
         </div>
-        <div className="toolbar-row">
-          {!state.notifyEnabled ? (
-            <button type="button" className="btn primary" onClick={requestNotify}>
-              Enable browser reminders
-            </button>
-          ) : (
-            <label className="field-inline">
-              <input
-                type="checkbox"
-                checked={state.notifyEnabled}
-                onChange={(e) =>
-                  setState((s) => ({ ...s, notifyEnabled: e.target.checked }))
-                }
-              />
-              <span>Reminders on</span>
-            </label>
-          )}
-          <label className="field-inline">
-            <span>Lead time</span>
-            <select
-              value={state.notifyLeadMinutes}
-              onChange={(e) =>
-                setState((s) => ({
-                  ...s,
-                  notifyLeadMinutes: Number(e.target.value),
-                }))
-              }
-            >
-              <option value={5}>5 min</option>
-              <option value={10}>10 min</option>
-              <option value={15}>15 min</option>
-            </select>
-          </label>
-          <label className="field-inline">
-            <input
-              type="checkbox"
-              checked={state.notifyUnsetSlots}
-              onChange={(e) =>
-                setState((s) => ({
-                  ...s,
-                  notifyUnsetSlots: e.target.checked,
-                }))
-              }
-            />
-            <span>Nudge if a slot is still empty</span>
-          </label>
-          <button type="button" className="btn" onClick={exportIcs}>
-            Export .ics (calendar)
+        <div className="toolbar-row toolbar-row--export">
+          <button type="button" className="btn primary" onClick={exportIcs}>
+            Download .ics calendar file
           </button>
           <button type="button" className="btn" onClick={share}>
             Copy share link
@@ -303,13 +235,13 @@ export default function App() {
               );
             }}
           >
-            Download JSON
+            Download JSON backup
           </button>
         </div>
         <p className="hint">
-          GitHub Pages cannot wake your phone when the site is closed. For alarms
-          without keeping a tab open, import the .ics file into Apple Calendar,
-          Google Calendar, or Outlook.
+          After downloading, open the <strong>.ics</strong> file on your phone or
+          desktop — your calendar app will ask which calendar to add it to. Each
+          event includes a 15‑minute reminder before it starts.
         </p>
       </section>
 

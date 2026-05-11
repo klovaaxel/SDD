@@ -86,8 +86,13 @@ body {
   margin-bottom: 12px;
 }
 
-.toolbar-row:last-child {
-  margin-bottom: 0;
+.toolbar-row--export {
+  flex-wrap: wrap;
+  gap: 10px 12px;
+}
+
+.toolbar-row--export .btn.primary {
+  font-weight: 600;
 }
 
 .field-inline {
