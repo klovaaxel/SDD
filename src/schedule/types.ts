@@ -38,8 +38,4 @@ export interface PersistedState {
   mondayMode: MondayMode;
   fridayWorkshop: boolean;
   wednesdayNote: string;
-  notifyEnabled: boolean;
-  notifyLeadMinutes: number;
-  /** Notify when a selectable slot starts soon and nothing is chosen */
-  notifyUnsetSlots: boolean;
 }

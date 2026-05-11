@@ -8,27 +8,33 @@ export const DEFAULT_STATE: PersistedState = {
   mondayMode: 'skip',
   fridayWorkshop: false,
   wednesdayNote: '',
-  notifyEnabled: false,
-  notifyLeadMinutes: 10,
-  notifyUnsetSlots: true,
 };
+
+/** Strip legacy fields (e.g. removed notification toggles) */
+export function normalizeState(
+  input: Partial<PersistedState> & Record<string, unknown>,
+): PersistedState {
+  const mondayMode: MondayMode =
+    (input.mondayMode as MondayMode | 'conference' | undefined) === 'conference'
+      ? 'skip'
+      : (input.mondayMode as MondayMode | undefined) ?? DEFAULT_STATE.mondayMode;
+  return {
+    version: 1,
+    choices: input.choices ?? {},
+    mondayMode,
+    fridayWorkshop: input.fridayWorkshop ?? false,
+    wednesdayNote: input.wednesdayNote ?? '',
+  };
+}
 
 export function loadState(): PersistedState {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return { ...DEFAULT_STATE };
-    const parsed = JSON.parse(raw) as Partial<PersistedState>;
+    const parsed = JSON.parse(raw) as Partial<PersistedState> &
+      Record<string, unknown>;
     if (parsed.version !== 1) return { ...DEFAULT_STATE };
-    const mondayMode: MondayMode =
-      (parsed.mondayMode as MondayMode | 'conference' | undefined) === 'conference'
-        ? 'skip'
-        : (parsed.mondayMode as MondayMode | undefined) ?? DEFAULT_STATE.mondayMode;
-    return {
-      ...DEFAULT_STATE,
-      ...parsed,
-      mondayMode,
-      choices: { ...DEFAULT_STATE.choices, ...parsed.choices },
-    };
+    return normalizeState({ ...DEFAULT_STATE, ...parsed });
   } catch {
     return { ...DEFAULT_STATE };
   }
@@ -44,18 +50,10 @@ export function exportJson(state: PersistedState): string {
 
 export function importJson(text: string): PersistedState | null {
   try {
-    const parsed = JSON.parse(text) as Partial<PersistedState>;
+    const parsed = JSON.parse(text) as Partial<PersistedState> &
+      Record<string, unknown>;
     if (parsed.version !== 1) return null;
-    const mondayMode: MondayMode =
-      (parsed.mondayMode as MondayMode | 'conference' | undefined) === 'conference'
-        ? 'skip'
-        : (parsed.mondayMode as MondayMode | undefined) ?? DEFAULT_STATE.mondayMode;
-    return {
-      ...DEFAULT_STATE,
-      ...parsed,
-      mondayMode,
-      choices: { ...DEFAULT_STATE.choices, ...parsed.choices },
-    };
+    return normalizeState({ ...DEFAULT_STATE, ...parsed });
   } catch {
     return null;
   }

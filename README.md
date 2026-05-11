@@ -1,6 +1,6 @@
-# SDD 2026 schedule picker
+# SDD 2026 calendar export
 
-Static web app to choose parallel sessions from the SDD 2026 PDF grid, see a compact timeline, export an `.ics` calendar (with 15‑minute alarms), share your picks via URL, and optionally use browser notifications while the page stays open.
+Static web app to choose parallel sessions from the official agenda grid, preview a compact timeline, download an `.ics` calendar file (with 15‑minute alarms in your calendar app), and share your picks via URL or JSON backup.
 
 ## Run locally
 
@@ -27,5 +27,5 @@ The app uses relative asset paths (`base: './'`), so it works both at the root o
 
 ## Notes
 
-- **Wednesday** parallel sessions are not present in the PDF extract used to build the dataset; the app shows a placeholder and a personal note field.
-- **Notifications:** Pure static hosting cannot schedule push notifications when the site is closed. Use **Export .ics** for calendar alarms, or keep the tab open with **Enable browser reminders**.
+- **Source of truth:** Session titles and times follow [sddconf.com/agenda](https://sddconf.com/agenda); confirm last‑minute changes on site.
+- **Reminders:** Import the downloaded `.ics` into Apple Calendar, Google Calendar, or Outlook — alarms are handled by your calendar app, which works reliably on static hosting (GitHub Pages).
