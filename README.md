@@ -19,8 +19,9 @@ Output is written to `dist/`.
 
 ## GitHub Pages
 
-1. In the repository **Settings → Pages**, set **Source** to **GitHub Actions** (not “Deploy from branch”).
-2. Push to `main`; the workflow in `.github/workflows/pages.yml` builds and deploys `dist/`.
+1. In the repository **Settings → Pages**, under **Build and deployment**, set **Source** to **Deploy from a branch**.
+2. Choose branch **`gh-pages`**, folder **`/ (root)`**, then save. (The first successful workflow run creates that branch.)
+3. Push to **`main`**; the workflow builds the site and pushes **`dist/`** to **`gh-pages`**.
 
 The app uses relative asset paths (`base: './'`), so it works both at the root of `username.github.io` and under `username.github.io/repo-name/`.
 
