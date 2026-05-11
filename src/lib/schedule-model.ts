@@ -43,7 +43,11 @@ export function applicableSlots(state: PersistedState): Slot[] {
   }
 
   for (const s of ALL_SLOTS) {
-    if (s.date === '2026-05-12' || s.date === '2026-05-14') {
+    if (
+      s.date === '2026-05-12' ||
+      s.date === '2026-05-13' ||
+      s.date === '2026-05-14'
+    ) {
       list.push(s);
     }
   }
@@ -118,7 +122,11 @@ export function buildTimeline(state: PersistedState): TimelineEntry[] {
   }
 
   for (const slot of ALL_SLOTS) {
-    if (slot.date === '2026-05-12' || slot.date === '2026-05-14') {
+    if (
+      slot.date === '2026-05-12' ||
+      slot.date === '2026-05-13' ||
+      slot.date === '2026-05-14'
+    ) {
       addSessionFromChoice(slot);
     }
   }

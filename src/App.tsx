@@ -167,6 +167,9 @@ export default function App() {
   const tuesdaySlotIds = ALL_SLOTS.filter((s) => s.date === '2026-05-12').map(
     (s) => s.id,
   );
+  const wednesdaySlotIds = ALL_SLOTS.filter((s) => s.date === '2026-05-13').map(
+    (s) => s.id,
+  );
   const thursdaySlotIds = ALL_SLOTS.filter((s) => s.date === '2026-05-14').map(
     (s) => s.id,
   );
@@ -362,18 +365,28 @@ export default function App() {
             </div>
           )}
           {tab === 'wed' && (
-            <section className="card wed-panel">
-              <h2>Wednesday 13 May</h2>
-              <p>
-                The official PDF used here jumps from Tuesday evening to Thursday
-                morning, so parallel sessions for Wednesday are not in the data
-                source. Check the conference app, signage, or SDD site for the real
-                Wednesday grid.
-              </p>
-              <label className="field-block">
-                <span>Your personal note (saved on this device)</span>
+            <div className="stack">
+              <section className="card pdf-note" role="note">
+                <strong>About Wednesday in the PDF</strong>
+                <p>
+                  Page 3 ends with <strong>Wednesday 13 May</strong>; page 4 prints the
+                  full parallel grid under <strong>Thursday 14 May</strong>. The talks
+                  below use that grid (same lineup as the Thursday tab). Choose each
+                  day separately — confirm rooms on site if anything shifts.
+                </p>
+              </section>
+              {wednesdaySlotIds.map((id) => (
+                <SlotPicker
+                  key={id}
+                  slotId={id}
+                  state={state}
+                  setState={setState}
+                />
+              ))}
+              <label className="field-block wed-extra-note">
+                <span>Extra note for Wednesday (optional)</span>
                 <textarea
-                  rows={4}
+                  rows={3}
                   value={state.wednesdayNote}
                   onChange={(e) =>
                     setState((s) => ({
@@ -381,10 +394,10 @@ export default function App() {
                       wednesdayNote: e.target.value,
                     }))
                   }
-                  placeholder="e.g. Team dinner 19:00, study sessions…"
+                  placeholder="e.g. dinner plans, BOF sessions…"
                 />
               </label>
-            </section>
+            </div>
           )}
           {tab === 'thu' && (
             <div className="stack">
@@ -441,9 +454,9 @@ export default function App() {
 
       <footer className="footer">
         <p>
-          Data transcribed from the SDD 2026 PDF schedule — verify critical room
-          changes on site. Each colleague opens this site on their own device;
-          sharing links only copies picks, not accounts.
+          Schedules follow the official SDD 2026 PDF (including Wednesday and
+          Thursday grids transcribed from page 4). Verify last‑minute room moves on
+          site. Plan data stays on each device unless you use share/export.
         </p>
       </footer>
     </div>

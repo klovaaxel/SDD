@@ -33,7 +33,8 @@ body {
 #root {
   max-width: 1120px;
   margin: 0 auto;
-  padding: 24px 18px 48px;
+  padding: max(16px, env(safe-area-inset-top)) max(14px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom)) max(14px, env(safe-area-inset-left));
 }
 
 .app {
@@ -114,7 +115,8 @@ body {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text);
-  padding: 8px 14px;
+  padding: 10px 16px;
+  min-height: 44px;
   border-radius: 999px;
   font-family: inherit;
   font-size: 0.92rem;
@@ -149,9 +151,9 @@ body {
 
 .toast {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
-  left: 24px;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  right: max(16px, env(safe-area-inset-right));
+  left: max(16px, env(safe-area-inset-left));
   max-width: 420px;
   margin-left: auto;
   background: #312e81;
@@ -165,19 +167,35 @@ body {
 
 .day-tabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   margin-bottom: 18px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.day-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.day-tabs::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
 }
 
 .tab {
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--muted);
-  padding: 8px 14px;
+  padding: 12px 18px;
+  min-height: 44px;
   border-radius: 999px;
   cursor: pointer;
   font-family: inherit;
+  flex-shrink: 0;
 }
 
 .tab.is-active {
@@ -267,7 +285,8 @@ body {
   grid-template-columns: auto 1fr;
   gap: 10px 12px;
   align-items: start;
-  padding: 10px 12px;
+  padding: 14px 14px;
+  min-height: 48px;
   border-radius: 10px;
   border: 1px solid var(--border);
   background: var(--surface);
@@ -368,13 +387,26 @@ body {
   color: var(--muted);
 }
 
-.wed-panel h2 {
-  margin-top: 0;
+.wed-extra-note {
+  margin-top: 4px;
 }
 
-.wed-panel p {
+.pdf-note {
+  border-color: #5b21b6;
+  background: linear-gradient(145deg, #1a1530, var(--card));
+}
+
+.pdf-note strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.pdf-note p {
+  margin: 0;
   color: var(--muted);
-  line-height: 1.55;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .field-block {
@@ -405,4 +437,38 @@ body {
 
 .footer p {
   margin: 0;
+}
+
+@media (max-width: 640px) {
+  .toolbar-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .field-inline {
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .field-inline select {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hero h1 {
+    font-size: 1.65rem;
+  }
+
+  .slot-card {
+    padding: 14px 14px;
+  }
+
+  .timeline {
+    max-height: none;
+  }
+
+  .side-col {
+    position: relative;
+  }
 }

@@ -797,6 +797,19 @@ const thu1600: Session[] = [
   },
 ];
 
+/** PDF page 4 prints this grid under “Thursday 14 May”; page 3 ends with “Wednesday 13 May”. Same titles transcribed for Wed + Thu pickers. */
+function cloneWedIdsFromThu(sessions: Session[]): Session[] {
+  return sessions.map((s) => ({
+    ...s,
+    id: s.id.replace(/^thu-/, 'wed-'),
+  }));
+}
+
+const wed0930 = cloneWedIdsFromThu(thu0930);
+const wed1130 = cloneWedIdsFromThu(thu1130);
+const wed1400 = cloneWedIdsFromThu(thu1400);
+const wed1600 = cloneWedIdsFromThu(thu1600);
+
 export const ALL_SLOTS: Slot[] = [
   {
     id: 'mon-conf-keynote',
@@ -871,6 +884,42 @@ export const ALL_SLOTS: Slot[] = [
     requiresChoice: true,
   },
   {
+    id: 'wed-0930',
+    date: '2026-05-13',
+    start: '09:30',
+    end: '11:00',
+    label: 'Sessions',
+    sessions: wed0930,
+    requiresChoice: true,
+  },
+  {
+    id: 'wed-1130',
+    date: '2026-05-13',
+    start: '11:30',
+    end: '13:00',
+    label: 'Sessions',
+    sessions: wed1130,
+    requiresChoice: true,
+  },
+  {
+    id: 'wed-1400',
+    date: '2026-05-13',
+    start: '14:00',
+    end: '15:30',
+    label: 'Sessions',
+    sessions: wed1400,
+    requiresChoice: true,
+  },
+  {
+    id: 'wed-1600',
+    date: '2026-05-13',
+    start: '16:00',
+    end: '17:30',
+    label: 'Sessions',
+    sessions: wed1600,
+    requiresChoice: true,
+  },
+  {
     id: 'thu-0930',
     date: '2026-05-14',
     start: '09:30',
@@ -942,6 +991,7 @@ const monBreaksExtra: BreakBlock[] = [
 export const ALL_BREAKS: BreakBlock[] = [
   ...monBreaksExtra,
   ...breaksForDate('2026-05-12', 'tue'),
+  ...breaksForDate('2026-05-13', 'wed'),
   ...breaksForDate('2026-05-14', 'thu'),
 ];
 
